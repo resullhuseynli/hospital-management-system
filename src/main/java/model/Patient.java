@@ -1,5 +1,7 @@
 package model;
 
+import manager.HospitalManager;
+
 import java.time.LocalDate;
 
 public class Patient extends Person{
@@ -8,6 +10,14 @@ public class Patient extends Person{
 
     public Patient(String id, String name, LocalDate birthDate, String gender,  String diagnosis) {
         super(id, name, birthDate, gender);
+        this.diagnosis = diagnosis;
+    }
+
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setDiagnosis(String diagnosis) {
         this.diagnosis = diagnosis;
     }
 

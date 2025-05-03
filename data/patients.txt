@@ -1,0 +1,2 @@
+ID:P001 | Name:Mansura Badalova | BirthDate:2006-05-29 | Gender:FEMALE | Diagnosis:Flue
+ID:P002 | Name:Shaiq | BirthDate:2006-05-29 | Gender:MALE | Diagnosis:Lung Cancer

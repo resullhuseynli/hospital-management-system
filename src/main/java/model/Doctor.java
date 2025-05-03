@@ -1,5 +1,7 @@
 package model;
 
+import manager.HospitalManager;
+
 import java.time.LocalDate;
 
 public class Doctor extends Person{

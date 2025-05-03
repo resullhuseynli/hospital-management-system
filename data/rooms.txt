@@ -1,0 +1,2 @@
+Room: 331 | Occupied:  YES | PatientID: P001
+Room: 325 | Occupied:  NO

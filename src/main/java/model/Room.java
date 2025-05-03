@@ -1,18 +1,29 @@
 package model;
 
+import exception.RoomOccupiedException;
+import manager.HospitalManager;
+
 public class Room {
 
-    private int roomNumber;
+    private final int roomNumber;
     private boolean isOccupied;
     private Patient patient;
 
-    Room(int roomNumber) {
+    public Room(int roomNumber) {
         this.roomNumber = roomNumber;
     }
 
     public void assignPatient(Patient patient) {
         if (patient == null) {
             throw new NullPointerException("Patient is null");
+        }
+        try {
+            if (this.patient != null) {
+                throw new RoomOccupiedException("This room is already given to another patient!");
+            }
+        } catch (RoomOccupiedException e) {
+            System.err.println(e.getMessage());
+            return;
         }
         this.patient = patient;
         System.out.println("Patient added successfully!");
@@ -39,7 +50,7 @@ public class Room {
     }
 
     private String isOccupiedToString() {
-        if  (isOccupied) {
+        if (isOccupied) {
             return "YES";
         }
         return "NO";
@@ -47,10 +58,6 @@ public class Room {
 
     public int getRoomNumber() {
         return roomNumber;
-    }
-
-    public void setRoomNumber(int roomNumber) {
-        this.roomNumber = roomNumber;
     }
 
     public boolean isOccupied() {
@@ -65,17 +72,31 @@ public class Room {
         return patient;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
-
-    //TAMAMLANMAYIBBBB
-    public static Room fromString(String line, Patient patient) {
+    public static Room fromString(String line) {
         String[] fields = line.split("\\|");
         int roomNumber = Integer.parseInt(fields[0].split(":")[1].trim());
-        boolean isOccupied = Boolean.parseBoolean(fields[1].split(":")[1].trim());
+        String isOccupiedString = fields[1].split(":")[1].trim();
+
+        boolean isOccupied = isOccupiedString.equals("YES");
+
+        String patientID = null;
+        if (isOccupied) {
+            patientID = fields[2].split(":")[1].trim();
+        }
         Room room = new Room(roomNumber);
-        return null;
+        room.setOccupied(isOccupied);
+
+        Patient patient = null;
+
+        if (patientID != null && HospitalManager.patients != null) {
+            for (Patient p : HospitalManager.patients) {
+                if (p.getId().equals(patientID)) {
+                    patient = p;
+                }
+            }
+        }
+
+        if (patient != null) room.assignPatient(patient);
+        return room;
     }
 }

@@ -1,0 +1,2 @@
+ID:D001 | Name:Resul Huseynli | BirthDate:2005-02-08 | Gender:MALE | EmploymentDate:2025-05-03 | Specialization:CARDIOLOGIST
+ID:D002 | Name:Nicat Khanaliyev | BirthDate:2005-10-07 | Gender:MALE | EmploymentDate:2025-05-03 | Specialization:GENERAL_PRACTITIONER

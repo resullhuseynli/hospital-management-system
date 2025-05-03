@@ -1,0 +1,2 @@
+ID: A001 | PatientID: P001 | DoctorID: D001 | DateTime: 2025-05-03T23:33:25.901224400 | Note: Be careful
+ID: A002 | PatientID: P002 | DoctorID: D002 | DateTime: 2025-05-03T23:33:25.901224400 | Note: Do not ignore use drugs
