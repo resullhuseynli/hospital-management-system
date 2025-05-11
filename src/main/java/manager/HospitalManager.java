@@ -1,5 +1,6 @@
 package manager;
 
+import exception.RoomOccupiedException;
 import model.Appointment;
 import model.Doctor;
 import model.Patient;
@@ -181,7 +182,7 @@ public class HospitalManager {
         }
     }
 
-    public void loadRoomsFromFile(String filePath) {
+    public void loadRoomsFromFile(String filePath) throws RoomOccupiedException {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
             String line = bufferedReader.readLine();
             if (line == null) {

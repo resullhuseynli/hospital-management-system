@@ -1,8 +1,9 @@
+import exception.RoomOccupiedException;
 import manager.HospitalManager;
 import statics.Statics;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws RoomOccupiedException {
 
         HospitalManager hospitalManager = new HospitalManager();
 

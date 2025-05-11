@@ -13,17 +13,12 @@ public class Room {
         this.roomNumber = roomNumber;
     }
 
-    public void assignPatient(Patient patient) {
+    public void assignPatient(Patient patient) throws RoomOccupiedException {
         if (patient == null) {
             throw new NullPointerException("Patient is null");
         }
-        try {
-            if (this.patient != null) {
-                throw new RoomOccupiedException("This room is already given to another patient!");
-            }
-        } catch (RoomOccupiedException e) {
-            System.err.println(e.getMessage());
-            return;
+        if (this.patient != null) {
+            throw new RoomOccupiedException("This room is already given to another patient!");
         }
         this.patient = patient;
         System.out.println("Patient added successfully!");
@@ -72,7 +67,7 @@ public class Room {
         return patient;
     }
 
-    public static Room fromString(String line) {
+    public static Room fromString(String line) throws RoomOccupiedException {
         String[] fields = line.split("\\|");
         int roomNumber = Integer.parseInt(fields[0].split(":")[1].trim());
         String isOccupiedString = fields[1].split(":")[1].trim();
